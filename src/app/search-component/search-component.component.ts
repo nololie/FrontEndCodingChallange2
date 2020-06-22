@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponentComponent implements OnInit {
 
+  private value;
   public APIresults: object;
   constructor(private search: FetchDataService) { }
 
@@ -16,11 +17,17 @@ export class SearchComponentComponent implements OnInit {
     
   }
 
-  request(){    
-    this.search.getAPI("Twilight").subscribe(
+  request(){  
+    event.preventDefault();
+    this.search.getAPI(this.value).subscribe(
       (data) => {
         this.APIresults = data.Search;
       })
+  }
+
+  inputValue(value){
+    this.value = value
+    return this.value;
   }
     
 }
