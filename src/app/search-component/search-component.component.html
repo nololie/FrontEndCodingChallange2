@@ -1,0 +1,9 @@
+<div class="searchComponentContainer">
+    <h1 id=searchHeader>Search for a movie</h1>
+    <button class="search" (click)="request()">Search</button>
+    <div id=requestResults>
+        <ul *ngFor="let result of APIresults">
+            <li >{{ result.Title }}</li>
+        </ul>
+    </div>
+</div>
