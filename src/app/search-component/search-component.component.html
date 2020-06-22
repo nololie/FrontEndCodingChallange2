@@ -1,10 +1,15 @@
 <div class="searchComponentContainer">
-    <h1 id=searchHeader>Search for a movie</h1><br>
+
+    <br><h1 id=searchHeader>Search for a movie</h1><br>
+
     <form>
-        <input #box type="text" placeholder="Search by Title..." (keyup.enter)="inputValue(box.value)"
-        (blur)="inputValue(box.value)"><br><br>
-        <button class="search" (click)="request()">Search</button>
+        <div id=searchBox>
+            <input #box id=box type="text" placeholder="Search by Title..." autocomplete (keyup.enter)="inputValue(box.value) && request()"
+            (blur)="inputValue(box.value)">
+            <input class="search" type="submit" (submit)="request()" value="Search">
+        </div>
     </form>
+
     <div id=requestResults>
 
         <ul *ngFor="let result of APIresults">
@@ -16,11 +21,12 @@
                     <li>Type: {{ result.Type }}</li>
                 </div>
 
-                <img id="img" src="{{ result.Poster }}" alt="{{ result.Title }}">
+                <img id="poster" src="{{ result.Poster }}" alt="{{ result.Title }}">
 
             </div>
             <br>
         </ul>
 
     </div>
+    
 </div>
