@@ -1,19 +1,26 @@
 <div class="searchComponentContainer">
-    <h1 id=searchHeader>Search for a movie</h1>
+    <h1 id=searchHeader>Search for a movie</h1><br>
     <form>
         <input #box type="text" placeholder="Search by Title..." (keyup.enter)="inputValue(box.value)"
-        (blur)="inputValue(box.value)">
+        (blur)="inputValue(box.value)"><br><br>
         <button class="search" (click)="request()">Search</button>
     </form>
     <div id=requestResults>
+
         <ul *ngFor="let result of APIresults">
-            <div class="info">
-                <h3>Movie title: {{ result.Title }}</h3>
-                <li>Release year: {{ result.Year }}</li>
-                <li>Type: {{ result.Type }}</li>
+            <div style="position: relative;">
+
+                <div class="info" style="position: absolute; display: none">
+                    <h3>Movie title: {{ result.Title }}</h3>
+                    <li>Release year: {{ result.Year }}</li>
+                    <li>Type: {{ result.Type }}</li>
+                </div>
+
+                <img id="img" src="{{ result.Poster }}" alt="{{ result.Title }}">
+
             </div>
             <br>
-            <img src="{{ result.Poster }}" alt="{{ result.Title}}">
         </ul>
+
     </div>
 </div>

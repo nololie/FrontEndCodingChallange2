@@ -16,12 +16,13 @@ export class SearchComponentComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
+ 
   request(){  
     event.preventDefault();
     this.search.getAPI(this.value).subscribe(
       (data) => {
-        this.APIresults = data.Search;
+        let Data = data
+        this.APIresults = Data.Search;
       })
   }
 

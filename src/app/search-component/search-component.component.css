@@ -1,19 +1,36 @@
 *{
     text-align: center;
 }
+form{
+    text-justify: center;
+    margin-bottom: 20px;
+}
 ul, h1{
+    padding: 0;
     color: aliceblue;
 }
 li {
     list-style-type: none;
 }
 #requestResults{
-    padding: 1fr;
+    height: 450px;
+    margin: 0 15% 0 15%;
     display: grid;
-    grid-template-columns: repeat(4, 47vh);
+    grid-template-columns: repeat(3, auto);
 }
 .searchComponentContainer{
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRNLIX67VdbOZdaMsDQeJjyFRM6kRBtIbaNfw&usqp=CAU);
-    background-repeat: no-repeat;
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRNLIX67VdbOZdaMsDQeJjyFRM6kRBtIbaNfw&usqp=CAU);
+    /* background-repeat: no-repeat; */
     background-size: cover;
+}
+/* .hover:hover{
+    background-color: black;
+} */
+#img{
+    max-height: 450px;
+}
+input{
+    font-size: large;
+    width: 50%;
+    height: 40px;
 }
