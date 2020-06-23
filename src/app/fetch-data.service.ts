@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { SearchResult } from './search-results';
+import { byTitledata, byTitleDatedata } from './search-results';
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
@@ -10,7 +10,11 @@ export class FetchDataService {
 
   constructor(private http: HttpClient) { }
 
-  getAPI(title: string): Observable<SearchResult>{
-    return this.http.get<SearchResult>(`http://www.omdbapi.com/?s=${title}&apikey=8f5303c6&`)
-    }
+  getMovieByTitle(title: string): Observable<byTitledata>{
+    return this.http.get<byTitledata>(`http://www.omdbapi.com/?s=${title}&apikey=8f5303c6&`)
+  }
+
+  getMovieByTitleDate(title: string, year: number): Observable<byTitleDatedata>{
+    return this.http.get<byTitleDatedata>(`http://www.omdbapi.com/?t=${title}&y=${year}&plot=full&apikey=8f5303c6&`)
+  }
 } 

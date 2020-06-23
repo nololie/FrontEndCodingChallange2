@@ -9,26 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponentComponent implements OnInit {
 
-  private value;
-  public APIresults: object;
+  private searchValue;
+  public APIbyTitleRequestResults: object; 
+  public APIbyTitleDateRequestResults : object;
   constructor(private search: FetchDataService) { }
 
   ngOnInit(): void {
     
   }
  
-  request(){  
+  requestByTitle(){  
     event.preventDefault();
-    this.search.getAPI(this.value).subscribe(
+    this.search.getMovieByTitle(this.searchValue).subscribe(
       (data) => {
-        let Data = data
-        this.APIresults = Data.Search;
+        this.APIbyTitleRequestResults = data.Search;
       })
   }
 
+  requestByTitleDate(title:string, year: number){
+    event.preventDefault;
+    this.search.getMovieByTitleDate( title, year).subscribe(
+      (data) => {
+        console.log(data);
+        
+        this.APIbyTitleDateRequestResults = data;
+      })
+      console.log(this.APIbyTitleDateRequestResults[0].Title);
+      
+  }
+
   inputValue(value){
-    this.value = value
-    return this.value;
+    this.searchValue = value
+    return this.searchValue;
   }
     
 }

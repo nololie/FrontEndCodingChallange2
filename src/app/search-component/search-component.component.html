@@ -1,19 +1,19 @@
 <div class="searchComponentContainer">
 
     <br><h1 id=searchHeader>Search for a movie</h1><br>
-
+    
     <form>
         <div id=searchBox>
-            <input #box id=box type="text" placeholder="Search by Title..." autocomplete (keyup.enter)="inputValue(box.value) && request()"
+            <input #box id=box type="text" placeholder="Search by Title..." autocomplete (keyup.enter)="inputValue(box.value) && requestByTitle()"
             (blur)="inputValue(box.value)">
-            <input class="search" type="submit" (submit)="request()" value="Search">
+            <input class="search" type="submit" (click)="requestByTitle()" value="Search">
         </div>
     </form>
+    
+    <div id=requestByTitleResults>
 
-    <div id=requestResults>
-
-        <ul *ngFor="let result of APIresults">
-            <div style="position: relative;">
+        <ul *ngFor="let result of APIbyTitleRequestResults">
+            <div style="position: relative;" (click)="requestByTitleDate(result.Title, result.Year)">
 
                 <div class="info" style="position: absolute; display: none">
                     <h3>Movie title: {{ result.Title }}</h3>
@@ -26,7 +26,16 @@
             </div>
             <br>
         </ul>
-
+        
     </div>
     
+    <div id="movieFullInfo">
+        
+        <ul *ngFor="let result of APIbyTitleDateRequestResults">
+            <h2>Movie title: {{ result.Title }}</h2>
+        </ul>
+
+    </div><br>
+    
+
 </div>
